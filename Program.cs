@@ -61,9 +61,16 @@ namespace Learning
 
             else if (typeOfFigure == 3) // конь
             {
+               verticalPosition = verticalCoordinatesAttacedFigure == (verticalCoordinateAattackFigure + 2);
+               horizontalPosition = horizontalCoordinatesAttackedFigure == (horizontalCoordinatesAttackFigure + 1);
               
 
             }
+            if(horizontalPosition && verticalPosition)
+            {
+                figureKilled = true;
+            }
+            
             
             else if (typeOfFigure == 4) // слон
             {
