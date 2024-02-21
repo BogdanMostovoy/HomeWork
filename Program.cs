@@ -27,58 +27,43 @@ namespace Learning
             int verticalCoordinateAattackFigure = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
 
-            int pointCanAttack = 0; // координата, куда фигура может атаковать
-            int pointCanAttack2 = 0; // вторая координата
-            int pointCanAttack3 = 0;    // Третья кооридната
-            int pointCanAttack4 = 0;
-            bool verticalPosition = false;
-            bool horizontalPosition = false;
+            bool verticalIsAttack = false;
+            bool horizontalIsAttack = false;
 
             bool figureKilled = false;
 
             if (typeOfFigure == 1) // пешка
             {
-                verticalPosition = verticalCoordinateAattackFigure == (verticalCoordinatesAttacedFigure - 1);
-                pointCanAttack = horizontalCoordinatesAttackFigure + 1;
-                pointCanAttack2 = horizontalCoordinatesAttackFigure - 1;
+                verticalIsAttack = verticalCoordinateAattackFigure == (verticalCoordinatesAttacedFigure - 1);
+                horizontalIsAttack = (horizontalCoordinatesAttackedFigure == horizontalCoordinatesAttackFigure + 1) || (horizontalCoordinatesAttackedFigure == horizontalCoordinatesAttackFigure - 1);
 
+                if (verticalIsAttack && horizontalIsAttack)
+                {
+                    figureKilled = true;
+                }
             }
-            if (verticalPosition && pointCanAttack == horizontalCoordinatesAttackedFigure || pointCanAttack2 == horizontalCoordinatesAttackedFigure)
-            {
-                figureKilled = true;
-            }
-
             else if (typeOfFigure == 2) // тура
             {
-                verticalPosition = verticalCoordinateAattackFigure == verticalCoordinatesAttacedFigure;
-                horizontalPosition = horizontalCoordinatesAttackFigure == horizontalCoordinatesAttackedFigure;
-            }
-            if (verticalPosition || horizontalPosition)
-            {
-                figureKilled = true;
-            }
+                verticalIsAttack = (verticalCoordinateAattackFigure == verticalCoordinatesAttacedFigure);
+                horizontalIsAttack = (horizontalCoordinatesAttackFigure == horizontalCoordinatesAttackedFigure);
 
-
-            else if (typeOfFigure == 3) // конь
-            {
-               verticalPosition = verticalCoordinatesAttacedFigure == (verticalCoordinateAattackFigure + 2);
-               horizontalPosition = horizontalCoordinatesAttackedFigure == (horizontalCoordinatesAttackFigure + 1);
-              
-
+                if(verticalIsAttack || horizontalIsAttack) 
+                {
+                    figureKilled = true;
+                }
             }
-            if(horizontalPosition && verticalPosition)
-            {
-                figureKilled = true;
-            }
-            
-            
-            else if (typeOfFigure == 4) // слон
+            else if (typeOfFigure == 3) //конь 
             {
 
             }
+            else if (typeOfFigure == 4) //слон
+            {
 
-
-
+            }
+            else 
+            {
+                Console.WriteLine("Фигура не найдена");
+            }
 
 
             if (figureKilled)
