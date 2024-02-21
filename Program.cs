@@ -54,7 +54,17 @@ namespace Learning
             }
             else if (typeOfFigure == 3) //конь 
             {
+                
+                verticalIsAttack = (verticalCoordinateAattackFigure == (verticalCoordinatesAttacedFigure + 2) || (verticalCoordinateAattackFigure == (verticalCoordinatesAttacedFigure - 2))
+                    || verticalCoordinateAattackFigure == (verticalCoordinatesAttacedFigure + 1) || verticalCoordinateAattackFigure == (verticalCoordinatesAttacedFigure - 1));
+                
+                horizontalIsAttack = (horizontalCoordinatesAttackFigure == (horizontalCoordinatesAttackedFigure + 1) || (horizontalCoordinatesAttackFigure == (horizontalCoordinatesAttackedFigure - 1))
+                    || horizontalCoordinatesAttackFigure == (horizontalCoordinatesAttackedFigure + 2) || horizontalCoordinatesAttackFigure == (horizontalCoordinatesAttackedFigure - 2)); 
 
+                if(horizontalIsAttack && verticalIsAttack)
+                {
+                    figureKilled = true;
+                }
             }
             else if (typeOfFigure == 4) //слон
             {
