@@ -66,7 +66,13 @@ namespace Learning
             }
             else if (typeOfFigure == 4) //слон
             {
+                verticalIsAttack = (verticalCoordinatesAttacedFigure % 2 == 0);
+                horizontalIsAttack = (horizontalCoordinatesAttackedFigure % 2 == 0);
 
+                if(verticalIsAttack && !horizontalIsAttack || !verticalIsAttack &&  horizontalIsAttack)
+                {
+                    figureKilled = true;
+                }
             }
             else 
             {
